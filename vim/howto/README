@@ -1,0 +1,27 @@
+1. apt install vim
+
+2. apt install cscope, or install from source code
+
+3. apt install ctags, or install from source code
+
+4. add the flowing code to ~/.bashrc
+alias vi='vim'
+alias cs='ctags -R * && cscope -Rbq'
+
+export echo=echo
+export EDITOR=vim
+
+5. cp -R ./vim ~/.vim
+
+6. cp ./vimrc ~/.vimrc
+
+7. logout then login
+
+8. enter the top directory of source code, run common 'cs' which may take a few minutes
+
+9. open source file from top directory, such as vim x.c or vim x/y/z.c
+
+10. common commands
+ctrl+[, enter the sub function / variable definition
+ctrl+\+c, show the caller function
+ctrl+\+s, show the postions of the function or the string

@@ -1,0 +1,40 @@
+vim是vi的加强版，一般系统中会将vi命令连接至vim，所以输入vi命令就是vim，如果没有连接，使用下面命令创建连接
+~/.bashrc文件中添加：alias vi='vim'
+
+vi创建文件，文件不存在则会自动创建
+vi txt
+
+vi打开文件
+vi txt
+
+vi分编辑模式和命令模式，打开vi默认是命令模式
+
+按i、a、o进入编辑模式，按esc进入命令模式
+
+编辑模式可以像Windows记事本一样编辑，包括delete、backspace、回车、上下箭头、pageup、pagedown等，视不同的shell可能支持鼠标复制粘贴
+
+命令模式常用命令：
+取消编辑u
+删除一行dd，删除5行d5d
+复制一行yy，复制3行y3y
+粘贴p
+选中内容复制v，然后使用上下箭头或者pageup/pagedown
+保存，:w
+退出，:q
+丢弃更改的内容退出，:q!
+保存并退出，:wq
+查找字符串，:/200，按n键光标定位下一个查找的内容，按N键光标定位上一个查找的内容
+查找字符串还有一种方式：光标定位在要查找的字符串上，按#键搜索下一个此字符串位置，按n键光标定位下一个查找的内容，按N键光标定位上一个查找的内容
+设置行号，:set nu
+取消行号，:set nonu
+查看当前编辑的文件名ctrl+g
+
+下面方法可实现类似Windows下SourceInsight功能：
+首先需要安装cscope和ctags：apt install cscope ctags。
+在项目代码顶层目录下执行：ctags -R * && cscope -Rbq，此命令会生成cscope.in.out cscope.out cscope.po.out tags四个文件，这是实现类似SourceInsight功能的数据库文件。
+在顶层目录打开任意文件：
+光标定位在函数上，按ctrl+]，进入函数定义，如果有多个按数字键选择
+光标定位在函数、宏定义等目标上，按ctrl+\+s搜索项目中所有出现目标的位置，如果有多个按数字键选择
+按esc键进入命令行模式，输入：tag 函数名，定位到函数定义的位置，如果有多个按数字键选择
+ctrl + o返回上次光标位置，可多次按
+ctrl + i前移光标位置，可多次按
